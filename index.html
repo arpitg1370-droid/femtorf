@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Femtorf Technologies Pvt. Ltd.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Fonts and Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <style>
+        :root {
+            --primary: #3574b0;
+            --primary-dark: #1e3459;
+            --text: #222;
+            --bg-light: #f4f8fb;
+            --shadow: 0 6px 16px rgba(30,52,89,0.08);
+            --transition: all 0.3s ease;
+        }
+        body { 
+            font-family: 'Roboto', sans-serif; 
+            background: var(--bg-light); 
+            margin: 0; 
+            color: var(--text);
+        }
+        header { 
+            background: linear-gradient(90deg,var(--primary-dark) 0,var(--primary) 100%);
+            background-blend-mode: overlay;
+            color: #fff;
+            text-align: center;
+            padding: 120px 24px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://media.giphy.com/media/xTiTnxpQ3ghPiB2Hp6/giphy.gif') center/cover;
+            opacity: 0.15;
+            z-index: 0;
+            pointer-events: none;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg,rgba(30,52,89,0.9) 0,rgba(53,116,176,0.85) 100%);
+        }
+        header > * {
+            position: relative;
+            z-index: 1;
+        }
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        header h1 { 
+            font-family: 'Poppins', sans-serif;
+            font-size: 3em;
+            margin-bottom: .4em;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        header p { 
+            font-size: 1.25em;
+            margin-bottom: .7em;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+        nav { 
+            margin-top: 32px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        nav a { 
+            color: #fff;
+            padding: 12px 24px;
+            text-decoration: none;
+            font-weight: 500;
+            letter-spacing: 1px;
+            border-radius: 25px;
+            transition: var(--transition);
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+        nav a:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.5);
+            transform: translateY(-2px);
+        }
+        section { 
+            padding: 48px 24px;
+            max-width: 1140px;
+            margin: 0 auto 32px;
+            background: #fff;
+            border-radius: 14px;
+            border: 1px solid #dee9f7;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        section:not(.gallery-section):hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(30,52,89,0.12);
+        }
+        .gallery-section {
+            padding: 0;
+            overflow: hidden;
+            background: var(--primary-dark);
+            margin: 32px auto;
+        }
+        section h2 { 
+            color: var(--primary);
+            font-size: 2.2em;
+            margin-bottom: 1em;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+        }
+        .features, .services { 
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+        .feature, .service { 
+            background: var(--bg-light);
+            border-radius: 12px;
+            box-shadow: 0 2px 6px rgba(53,116,176,0.1);
+            padding: 32px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        .feature::before, .service::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--primary);
+            opacity: 0;
+            transition: var(--transition);
+        }
+        .feature:hover::before, .service:hover::before {
+            opacity: 1;
+        }
+        .feature:hover, .service:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(53,116,176,0.15);
+        }
+        .feature i, .service i {
+            font-size: 2.5em;
+            color: var(--primary);
+            margin-bottom: 20px;
+            display: block;
+        }
+        .feature h3, .service h3 { 
+            color: var(--primary-dark);
+            font-size: 1.3em;
+            margin-bottom: 0.8em;
+            font-weight: 600;
+        }
+        .contact-info, .careers-info { 
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+        .contact-info p, .careers-info p { 
+            margin: 1em 0;
+        }
+        footer { 
+            background: var(--primary-dark);
+            color: #eee;
+            text-align: center;
+            padding: 40px 24px;
+            margin-top: 40px;
+            font-size: 0.95em;
+        }
+        @media(max-width:700px) { 
+            section, header { padding: 24px 16px; }
+            header { padding-top: 80px; padding-bottom: 60px; }
+            header h1 { font-size: 2.2em; }
+            .features, .services { gap: 16px; }
+        }
+
+        .apply-btn { 
+            color: #fff;
+            background: var(--primary);
+            padding: 12px 28px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            margin-top: 20px;
+            display: inline-block;
+            border: 2px solid var(--primary);
+        }
+        .apply-btn:hover { 
+            background: transparent;
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* Enhanced Form Styling */
+        form {
+            margin-top: 30px;
+            display: grid;
+            gap: 16px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        input, textarea {
+            padding: 12px 16px;
+            border: 2px solid #dee9f7;
+            border-radius: 8px;
+            font-family: 'Roboto', sans-serif;
+            transition: var(--transition);
+            width: 100%;
+            box-sizing: border-box;
+        }
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(53,116,176,0.1);
+        }
+        button[type="submit"] {
+            background: var(--primary);
+            color: #fff;
+            padding: 14px 36px;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 1em;
+            cursor: pointer;
+            transition: var(--transition);
+            justify-self: center;
+            border: 2px solid var(--primary);
+        }
+        button[type="submit"]:hover {
+            background: transparent;
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* Animations */
+        [data-aos] {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: var(--transition);
+        }
+        [data-aos].aos-animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCI+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTUwIDVMOTAgMjV2NTBMNTAgOTUgMTAgNzVWMjV6TTUwIDE1TDE4LjUgMzF2MzhMNTAgODUgODEuNSA2OVYzMXoiLz48L3N2Zz4=" alt="Femtorf Logo" class="logo">
+        <h1 data-aos="fade-up">Femtorf Technologies Pvt. Ltd.</h1>
+        <p data-aos="fade-up" data-aos-delay="100">Enabling India's leadership in space and defense electronics through advanced microelectronics assembly and packaging solutions.</p>
+        <nav data-aos="fade-up" data-aos-delay="200">
+            <a href="#about"><i class="fas fa-info-circle"></i> Overview</a>
+            <a href="#services"><i class="fas fa-cogs"></i> Services</a>
+            <a href="#tech"><i class="fas fa-microchip"></i> Technology</a>
+            <a href="#careers"><i class="fas fa-users"></i> Careers</a>
+            <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
+        </nav>
+    </header>
+
+
+
+    <section id="about" data-aos="fade-up">
+        <h2><i class="fas fa-building"></i> Company Overview</h2>
+        <p>
+            Femtorf is a cutting-edge Indian company, headquartered in Ahmedabad, specializing in advanced microelectronics assembly and high-reliability packaging solutions for mission-critical applications. We support strategic sectors such as space, aerospace, defence, and high-performance computing, with a strong emphasis on indigenous capability and system reliability.
+        </p>
+        <div class="features">
+            <div class="feature" data-aos="fade-up" data-aos-delay="100">
+                <i class="fas fa-microchip"></i>
+                <h3>Core Competencies</h3>
+                <ul>
+                    <li>Flip-chip & wire bonding</li>
+                    <li>Die attach & SMT</li>
+                    <li>Hybrid integration</li>
+                </ul>
+            </div>
+            <div class="feature" data-aos="fade-up" data-aos-delay="200">
+                <i class="fas fa-box"></i>
+                <h3>Advanced Packaging</h3>
+                <ul>
+                    <li>Hermetic & non-hermetic options</li>
+                    <li>Multi-chip modules (MCM)</li>
+                    <li>Ceramic/organic substrates</li>
+                </ul>
+            </div>
+            <div class="feature" data-aos="fade-up" data-aos-delay="300">
+                <i class="fas fa-vial"></i>
+                <h3>Testing & Production</h3>
+                <ul>
+                    <li>Environmental & electrical reliability tests</li>
+                    <li>Thermal cycling, vibration, burn-in</li>
+                    <li>Rapid prototyping — scalable production</li>
+                </ul>
+            </div>
+            <div class="feature" data-aos="fade-up" data-aos-delay="400">
+                <i class="fas fa-handshake"></i>
+                <h3>Clients & Partnerships</h3>
+                <ul>
+                    <li>ISRO, DRDO, HAL, Defence PSUs</li>
+                    <li>Public sector R&D collaboration</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section id="services" data-aos="fade-up">
+        <h2><i class="fas fa-tools"></i> Our Services</h2>
+        <div class="services">
+            <div class="service" data-aos="fade-up" data-aos-delay="100">
+                <i class="fas fa-microchip"></i>
+                <h3>Microelectronics Assembly</h3>
+                <p>Advanced flip-chip bonding, wire bonding, die attach, and surface mount technology to assure electrical/mechanical reliability for mission-critical components.</p>
+            </div>
+            <div class="service" data-aos="fade-up" data-aos-delay="200">
+                <i class="fas fa-cube"></i>
+                <h3>Advanced Packaging Solutions</h3>
+                <p>Hermetic and non-hermetic packaging, multi-chip modules (MCM), ceramic/organic substrates customized for harsh aerospace and defense environments.</p>
+            </div>
+            <div class="service" data-aos="fade-up" data-aos-delay="300">
+                <i class="fas fa-clipboard-check"></i>
+                <h3>Testing & Quality Assurance</h3>
+                <p>Comprehensive thermal cycling, vibration, burn-in, and X-ray inspection processes, fully aligned with ISO 9001, AS9100, MIL-STD standards.</p>
+            </div>
+            <div class="service" data-aos="fade-up" data-aos-delay="400">
+                <i class="fas fa-rocket"></i>
+                <h3>Rapid Prototyping & Production</h3>
+                <p>Low and medium-volume production runs, custom design for rapid proof-of-concept and new product development.</p>
+            </div>
+        </div>
+    </section>
+    <section id="tech" data-aos="fade-up">
+        <h2><i class="fas fa-layer-group"></i> Technology & Facility</h2>
+        <div class="tech-features" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; margin-bottom: 32px;">
+            <div class="feature" data-aos="fade-up" data-aos-delay="100">
+                <i class="fas fa-clean"></i>
+                <h3>Clean Room Facilities</h3>
+                <p>Cleanroom-certified assembly lines (Class 100/1000) ensuring pristine manufacturing conditions</p>
+            </div>
+            <div class="feature" data-aos="fade-up" data-aos-delay="200">
+                <i class="fas fa-robot"></i>
+                <h3>Automated Equipment</h3>
+                <p>State-of-the-art automated wire bonders and die attach machines for precision assembly</p>
+            </div>
+            <div class="feature" data-aos="fade-up" data-aos-delay="300">
+                <i class="fas fa-microscope"></i>
+                <h3>Advanced Testing</h3>
+                <p>Comprehensive optical inspection & X-ray analysis labs for quality assurance</p>
+            </div>
+            <div class="feature" data-aos="fade-up" data-aos-delay="400">
+                <i class="fas fa-temperature-high"></i>
+                <h3>Environmental Testing</h3>
+                <p>Advanced thermal shock and vibration test chambers for reliability verification</p>
+            </div>
+        </div>
+        <div class="certifications" data-aos="fade-up" data-aos-delay="500" style="text-align: center; padding: 32px; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); border-radius: 12px; position: relative; overflow: hidden;">
+            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('https://media.giphy.com/media/26BROrSHlmyzzHf3i/giphy.gif') center/cover; opacity: 0.1;"></div>
+            <h3 style="color: white; margin-bottom: 24px; font-size: 1.8em; position: relative;"><i class="fas fa-certificate" style="color: #ffd700;"></i> Our Certifications</h3>
+            <p style="font-size: 1.1em; position: relative;">
+                <span class="cert-badge" style="display: inline-block; padding: 12px 24px; margin: 8px; background: rgba(255,255,255,0.9); border-radius: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); font-weight: 600; color: var(--primary-dark); transition: all 0.3s ease;">ISO 9001:2015</span>
+                <span class="cert-badge" style="display: inline-block; padding: 12px 24px; margin: 8px; background: rgba(255,255,255,0.9); border-radius: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); font-weight: 600; color: var(--primary-dark); transition: all 0.3s ease;">AS9100D</span>
+                <span class="cert-badge" style="display: inline-block; padding: 12px 24px; margin: 8px; background: rgba(255,255,255,0.9); border-radius: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); font-weight: 600; color: var(--primary-dark); transition: all 0.3s ease;">MIL-STD-883</span>
+                <span class="cert-badge" style="display: inline-block; padding: 12px 24px; margin: 8px; background: rgba(255,255,255,0.9); border-radius: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); font-weight: 600; color: var(--primary-dark); transition: all 0.3s ease;">ISRO Vendor (In Progress)</span>
+            </p>
+        </div>
+    </section>
+    <section id="careers" data-aos="fade-up">
+        <h2><i class="fas fa-users"></i> Careers</h2>
+        <div class="careers-info">
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 40px;">At Femtorf, our team is our greatest strength. Work on high-impact national projects with state-of-the-art technology in a collaborative, innovative environment.</p>
+            <div class="job-listings" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
+                <div class="feature" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-microchip"></i>
+                    <h3>Microelectronics Assembly Engineer</h3>
+                    <p>Lead advanced assembly processes and optimize production workflows</p>
+                </div>
+                <div class="feature" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-check-double"></i>
+                    <h3>Quality Assurance Specialist</h3>
+                    <p>Ensure product quality meets aerospace and defense standards</p>
+                </div>
+                <div class="feature" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fas fa-box-open"></i>
+                    <h3>Packaging Development Technician</h3>
+                    <p>Design and implement advanced packaging solutions</p>
+                </div>
+                <div class="feature" data-aos="fade-up" data-aos-delay="400">
+                    <i class="fas fa-cogs"></i>
+                    <h3>Process Engineer</h3>
+                    <p>Optimize manufacturing processes and implement improvements</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 40px;" data-aos="fade-up" data-aos-delay="500">
+                <p style="margin-bottom: 20px;">
+                    Email your resume to <b>careers@femtorf.com</b>
+                </p>
+                <a href="javascript:void(0)" onclick="openApplicationModal()" class="apply-btn"><i class="fas fa-paper-plane"></i> Apply Online</a>
+            </div>
+        </div>
+    </section>
+    <section id="contact" data-aos="fade-up">
+        <h2><i class="fas fa-envelope"></i> Contact Us</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; align-items: start;">
+            <div class="contact-info" data-aos="fade-up" data-aos-delay="100">
+                <div class="contact-card" style="background: var(--bg-light); padding: 32px; border-radius: 12px; box-shadow: var(--shadow);">
+                    <h3 style="color: var(--primary); margin-bottom: 24px; font-size: 1.4em;"><i class="fas fa-location-dot"></i> Our Location</h3>
+                    <p><b>Femtorf Technologies Pvt. Ltd.</b></p>
+                    <p>123 Innovation Park, Ahmedabad, Gujarat, India 380015</p>
+                    <div style="margin: 24px 0; border-top: 1px solid #dee9f7; padding-top: 24px;">
+                        <p><i class="fas fa-phone"></i> <b>Phone:</b> +91 79 1234 5678</p>
+                        <p><i class="fas fa-envelope"></i> <b>Email:</b> info@femtorf.com</p>
+                        <p><i class="fas fa-clock"></i> <b>Business Hours:</b> Mon-Fri, 9:00 AM – 6:00 PM IST</p>
+                    </div>
+                </div>
+            </div>
+            <div data-aos="fade-up" data-aos-delay="200">
+                <form>
+                    <div class="form-row">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                        <input type="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+                    <button type="submit"><i class="fas fa-paper-plane"></i> Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div style="max-width: 1140px; margin: 0 auto; display: grid; gap: 24px;">
+            <div style="text-align: center;">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MCIgaGVpZ2h0PSI4MCIgdmlld0JveD0iMCAwIDEwMCAxMDAiPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik01MCA1TDkwIDI1djUwTDUwIDk1IDEwIDc1VjI1ek01MCAxNUwxOC41IDMxdjM4TDUwIDg1IDgxLjUgNjlWMzF6Ii8+PC9zdmc+" alt="Femtorf Logo" style="width: 60px; margin-bottom: 16px;">
+                <div style="font-size: 0.9em; opacity: 0.8;">
+                    <p>&copy; 2025 Femtorf Technologies Pvt. Ltd.</p>
+                    <p style="margin-top: 8px;">Enabling India's leadership in strategic electronics.</p>
+                </div>
+            </div>
+            <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 16px; text-align: center;">
+                <a href="#" style="color: #fff; margin: 0 12px; opacity: 0.8;"><i class="fab fa-linkedin"></i></a>
+                <a href="#" style="color: #fff; margin: 0 12px; opacity: 0.8;"><i class="fab fa-twitter"></i></a>
+                <a href="#" style="color: #fff; margin: 0 12px; opacity: 0.8;"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
+    <!-- Careers Application Form Modal -->
+    <div id="application-modal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.8); z-index: 1000; overflow-y: auto;">
+        <div style="max-width: 600px; margin: 40px auto; background: white; padding: 32px; border-radius: 12px; position: relative;">
+            <button onclick="closeApplicationModal()" style="position: absolute; right: 16px; top: 16px; background: none; border: none; font-size: 24px; cursor: pointer;"><i class="fas fa-times"></i></button>
+            <h2 style="color: var(--primary); margin-bottom: 24px;"><i class="fas fa-paper-plane"></i> Apply Online</h2>
+            <form id="application-form" onsubmit="sendApplicationEmail(event)">
+                <div class="form-row">
+                    <input type="text" id="fullName" name="fullName" placeholder="Full Name" required>
+                    <input type="email" id="email" name="email" placeholder="Email Address" required>
+                </div>
+                <div class="form-row">
+                    <input type="tel" id="phone" name="phone" placeholder="Phone Number" required>
+                    <select id="position" name="position" required style="padding: 12px 16px; border: 2px solid #dee9f7; border-radius: 8px; width: 100%;">
+                        <option value="">Select Position</option>
+                        <option value="Microelectronics Assembly Engineer">Microelectronics Assembly Engineer</option>
+                        <option value="Quality Assurance Specialist">Quality Assurance Specialist</option>
+                        <option value="Packaging Development Technician">Packaging Development Technician</option>
+                        <option value="Process Engineer">Process Engineer</option>
+                    </select>
+                </div>
+                <input type="text" id="experience" name="experience" placeholder="Years of Experience" required>
+                <textarea id="coverLetter" name="coverLetter" rows="4" placeholder="Cover Letter" required></textarea>
+                <button type="submit"><i class="fas fa-paper-plane"></i> Submit Application</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+
+
+        // Initialize AOS animations
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100,
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const section = document.querySelector(this.getAttribute('href'));
+                if (section) {
+                    section.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        // Application Modal Functions
+        function openApplicationModal() {
+            document.getElementById('application-modal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeApplicationModal() {
+            document.getElementById('application-modal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Handle application form submission
+        function sendApplicationEmail(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const position = document.getElementById('position').value;
+            const experience = document.getElementById('experience').value;
+            const coverLetter = document.getElementById('coverLetter').value;
+
+            // Construct email body
+            const emailBody = `Job Application for ${position}
+
+Applicant Details:
+----------------
+Name: ${fullName}
+Email: ${email}
+Phone: ${phone}
+Position: ${position}
+Years of Experience: ${experience}
+
+Cover Letter:
+------------
+${coverLetter}`;
+
+            // Construct mailto URL
+            const mailtoUrl = `mailto:careers@femtorf.com?subject=Job Application: ${position} - ${fullName}&body=${encodeURIComponent(emailBody)}`;
+            
+            // Open email client
+            window.location.href = mailtoUrl;
+
+            // Close modal and reset form after a short delay
+            setTimeout(() => {
+                closeApplicationModal();
+                document.getElementById('application-form').reset();
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
